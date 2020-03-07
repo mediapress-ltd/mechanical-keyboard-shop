@@ -19,7 +19,7 @@ interface IOption {
 interface IProps {
   options: IOption[];
   selectedVariants: {};
-  handleSelect: (e: { target: { value: string; name: string } }) => void;
+  handleSelect: (name: string, value: string) => void;
 }
 
 const VariantsSelector = ({ options, selectedVariants, handleSelect }: IProps) => {

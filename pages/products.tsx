@@ -1,7 +1,7 @@
-import React from "react";
-import { gql } from "apollo-boost";
+import React from 'react';
+import { gql } from 'apollo-boost';
 
-import JobList from "../components/ProductList/ProductList.component";
+import JobList from '../components/ProductList/ProductList.component';
 
 const Products = ({ data }) => {
   return <JobList products={data?.shop?.products?.edges || []} />;

@@ -5,6 +5,9 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import withApollo from '../helpers/withApollo';
 import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
 
+import 'normalize.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
+
 interface IProps {
   apollo: ApolloClient<NormalizedCacheObject>;
 }
