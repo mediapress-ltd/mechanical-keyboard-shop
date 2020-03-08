@@ -8,7 +8,7 @@ export const ProductDetailContainer = styled.div`
   max-width: 60rem;
   height: 60vh;
 
-  h2 {
+  h1 {
     margin: 0;
   }
 `;
@@ -17,7 +17,7 @@ export const Images = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   grid-gap: 1rem;
-  width: 100%;
+  width: 80%;
 `;
 
 export const LargeImage = styled.img`
@@ -41,4 +41,8 @@ export const SmallImage = styled.img`
   border-radius: 0.5rem;
 `;
 
-export const Details = styled.div``;
+export const Details = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  align-content: start;
+`;

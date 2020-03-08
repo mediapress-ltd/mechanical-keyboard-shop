@@ -3,6 +3,12 @@ import { InMemoryCache } from 'apollo-boost';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { ApolloClient } from 'apollo-client';
+
+import { resolvers, typeDefs } from './resolvers';
+import { default as data } from './initialData';
+
+const cache = new InMemoryCache();
+
 const httpLink = createHttpLink({
   uri: 'https://mechanical-keyboard-shop.myshopify.com/api/2020-01/graphql.json'
 });
@@ -13,10 +19,13 @@ const middlewareLink = setContext(() => ({
   }
 }));
 
-export default withApollo(
-  ({ initialState }) =>
-    new ApolloClient({
-      link: middlewareLink.concat(httpLink),
-      cache: new InMemoryCache()
-    })
-);
+const client = new ApolloClient({
+  link: middlewareLink.concat(httpLink),
+  cache: new InMemoryCache(),
+  typeDefs,
+  resolvers
+});
+
+client.writeData({ data });
+
+export default withApollo(({ initialState }) => client);

@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomSelect from './CustomSelect/CustomSelect.component';
+import CustomSelect from '../CustomSelect/CustomSelect.component';
 import styled from 'styled-components';
 
 const Selectors = styled.div`

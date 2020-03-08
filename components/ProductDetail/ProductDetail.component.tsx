@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 
-import VariantsSelector from '../VariantsSelector';
+import VariantsSelector from '../VariantsSelector/VariantsSelector';
+import AddToCartButton from '../CustomButton/CustomButton.component';
 
-import { ProductDetailContainer, Images, LargeImage, SmallImages, SmallImage, Details } from './ProductDetail.styles';
+import {
+  ProductDetailContainer,
+  Images,
+  LargeImage,
+  SmallImages,
+  SmallImage,
+  Details
+} from './ProductDetail.styles';
 
 interface IProductDetail {
   id: string;
@@ -39,9 +47,10 @@ interface IProductDetail {
 interface IProps {
   product: IProductDetail;
   selectedVariantId: string;
+  addProduct: (product: {}) => void;
 }
 
-const ProductDetail = ({ product, selectedVariantId }: IProps) => {
+const ProductDetail = ({ product, selectedVariantId, addProduct }: IProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedVariants, setSelectedVariants] = useState({});
 
@@ -69,14 +78,20 @@ const ProductDetail = ({ product, selectedVariantId }: IProps) => {
     const newSelectedVariants = { ...selectedVariants, ...newOption };
     const newVariant = product.variants.edges.filter(
       edge =>
-        edge.node.title.includes(newSelectedVariants['Size']) && edge.node.title.includes(newSelectedVariants['Color'])
+        edge.node.title.includes(newSelectedVariants['Size']) &&
+        edge.node.title.includes(newSelectedVariants['Color'])
     )[0];
     Router.push('/[handle]', `/${product.handle}?variant=${newVariant.node.id}`);
   };
 
   const smallImages = product?.images?.edges.map((image, index) => {
     return (
-      <SmallImage key={image.node.src} alt="product" src={image.node.src} onClick={() => setSelectedImage(index)} />
+      <SmallImage
+        key={image.node.src}
+        alt="product"
+        src={image.node.src}
+        onClick={() => setSelectedImage(index)}
+      />
     );
   });
 
@@ -87,10 +102,17 @@ const ProductDetail = ({ product, selectedVariantId }: IProps) => {
         <SmallImages>{smallImages}</SmallImages>
       </Images>
       <Details>
-        <h2>{product?.title}</h2>
-        <h4>Price 100€</h4>
-        <h5>Tax included.</h5>
-        <VariantsSelector options={product.options} handleSelect={handleSelect} selectedVariants={selectedVariants} />
+        <div>
+          <h1>{product?.title}</h1>
+          <h4>Price 100€</h4>
+          <h5>Tax included.</h5>
+        </div>
+        <VariantsSelector
+          options={product.options}
+          handleSelect={handleSelect}
+          selectedVariants={selectedVariants}
+        />
+        <AddToCartButton onClick={() => addProduct(product)}>Add to cart</AddToCartButton>
       </Details>
     </ProductDetailContainer>
   );

@@ -1,12 +1,21 @@
 import React from 'react';
-import ProductDetail from '../components/ProductDetail/ProductDetail.component';
+import ProductDetail from '../components/ProductDetail/ProductDetail.container';
 import { gql } from 'apollo-boost';
 
 const Product = ({ selectedVariantId, data }) => {
-  return <ProductDetail product={data?.shop?.productByHandle || []} selectedVariantId={selectedVariantId} />;
+  return (
+    <ProductDetail
+      product={data?.shop?.productByHandle || []}
+      selectedVariantId={selectedVariantId}
+    />
+  );
 };
 
-Product.getInitialProps = async (ctx: { apolloClient: { query }; query: { handle: string }; asPath: string }) => {
+Product.getInitialProps = async (ctx: {
+  apolloClient: { query };
+  query: { handle: string };
+  asPath: string;
+}) => {
   const apolloClient = ctx.apolloClient;
   const queryContext = JSON.stringify(ctx.query.handle);
 
