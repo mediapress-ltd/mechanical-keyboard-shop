@@ -1,4 +1,3 @@
-import React from 'react';
 import ProductDetail from '../components/ProductDetail/ProductDetail.container';
 import { gql } from 'apollo-boost';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomSelect from '../CustomSelect/CustomSelect.component';
 import styled from 'styled-components';
 

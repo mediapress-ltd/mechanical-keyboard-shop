@@ -1,6 +1,6 @@
 const INITIAL_DATA = {
   cartItems: [],
-  itemCount: 10,
+  itemCount: 0,
   cartTotal: 0
 };
 

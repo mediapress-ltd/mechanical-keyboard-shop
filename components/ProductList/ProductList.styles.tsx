@@ -16,16 +16,19 @@ export const ProductListItem = styled.a`
   height: 65vh;
   max-width: 20rem;
   border-radius: 1rem;
-  box-shadow: 0px 4px 15px 10px #eeeeee;
+  box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.15);
   transition: transform 0.3s;
   cursor: pointer;
   text-decoration: none;
   color: black;
   margin-bottom: 1rem;
+  color: #292f33;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0px 4px 15px 10px #ddd;
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.3);
+    color: #292f33;
+    text-decoration: none;
   }
 `;
 
