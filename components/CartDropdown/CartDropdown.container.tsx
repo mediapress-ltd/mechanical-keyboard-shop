@@ -3,12 +3,6 @@ import { gql } from 'apollo-boost';
 
 import CartDropdown from './CartDropdown.component';
 
-const TOGGLE_CART_HIDDEN = gql`
-  mutation ToggleCartHidden {
-    toggleCartHidden @client
-  }
-`;
-
 const GET_CART_ITEMS = gql`
   {
     cartItems @client

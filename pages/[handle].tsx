@@ -55,6 +55,9 @@ Product.getInitialProps = async (ctx: {
                   src
                 }
                 price
+                product {
+                  title
+                }
               }
             }
           }

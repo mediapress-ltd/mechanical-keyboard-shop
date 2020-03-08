@@ -1,6 +1,5 @@
 import Router from 'next/router';
 
-import CustomButton from '../CustomButton/CustomButton.component';
 import CartItem from '../CartItem/CartItem.component';
 
 import {

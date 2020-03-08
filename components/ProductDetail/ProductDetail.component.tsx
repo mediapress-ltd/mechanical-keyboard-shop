@@ -38,6 +38,9 @@ interface IProductDetail {
           price: string;
           selectedOptions: [];
           title: string;
+          product: {
+            title: string;
+          };
         };
       }
     ];
@@ -70,6 +73,7 @@ const ProductDetail = ({ product, selectedVariantId, addProduct }: IProps) => {
         [variant.name]: variant.value
       }))
     );
+
     setSelectedVariants(selectedOptions);
   }, [selectedVariantId]);
 
@@ -82,6 +86,18 @@ const ProductDetail = ({ product, selectedVariantId, addProduct }: IProps) => {
         edge.node.title.includes(newSelectedVariants['Color'])
     )[0];
     Router.push('/[handle]', `/${product.handle}?variant=${newVariant.node.id}`);
+  };
+
+  const handleAddItemToCart = () => {
+    let variantToAdd = {};
+    if (selectedVariantId) {
+      variantToAdd = {
+        ...product.variants.edges.filter(edge => edge.node.id === selectedVariantId)[0]
+      }.node;
+    } else {
+      variantToAdd = product.variants.edges[0].node;
+    }
+    addProduct(variantToAdd);
   };
 
   const smallImages = product?.images?.edges.map((image, index) => {
@@ -112,7 +128,7 @@ const ProductDetail = ({ product, selectedVariantId, addProduct }: IProps) => {
           handleSelect={handleSelect}
           selectedVariants={selectedVariants}
         />
-        <AddToCartButton onClick={() => addProduct(product)}>Add to cart</AddToCartButton>
+        <AddToCartButton onClick={() => handleAddItemToCart()}>Add to cart</AddToCartButton>
       </Details>
     </ProductDetailContainer>
   );
