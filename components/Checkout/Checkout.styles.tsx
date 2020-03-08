@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+export const CheckoutContainer = styled.div``;
 export const CheckoutPageContainer = styled.div`
   width: 55%;
   display: grid;
@@ -35,6 +36,7 @@ export const CheckoutItemsContainer = styled.div`
 `;
 export const TotalContainer = styled.div`
   margin-top: 2rem;
+  margin-bottom: 3rem;
   margin-left: auto;
   font-size: 2rem;
 `;
