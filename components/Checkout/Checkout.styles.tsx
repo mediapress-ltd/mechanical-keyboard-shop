@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-export const CheckoutContainer = styled.div``;
 export const CheckoutPageContainer = styled.div`
   width: 55%;
   display: grid;
@@ -10,7 +9,14 @@ export const CheckoutPageContainer = styled.div`
     margin-left: auto;
     margin-top: 3rem;
   }
+
+  @media (max-width: 800px) {
+    width: unset;
+    padding: 0 1rem;
+  }
 `;
+
+export const CheckoutContainer = styled.div``;
 
 export const CheckoutHeaderContainer = styled.div`
   display: grid;
@@ -20,6 +26,12 @@ export const CheckoutHeaderContainer = styled.div`
   padding: 1rem 0;
   font-size: 1rem;
   align-items: center;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(5, auto);
+    font-size: 0.8rem;
+    grid-gap: unset;
+  }
 `;
 
 export const HeaderBlockContainer = styled.div`

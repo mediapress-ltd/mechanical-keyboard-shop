@@ -12,7 +12,11 @@ export const CartDropdownContainer = styled.div`
   background-color: white;
   border-radius: 0.8rem;
   box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.15);
-  z-index: 10;
+  z-indez: 10;
+
+  @media (max-width: 800px) {
+    margin-left: -17rem;
+  }
 `;
 
 export const CartDropdownButton = styled(CustomButton)`

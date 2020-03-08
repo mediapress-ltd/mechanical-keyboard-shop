@@ -1,6 +1,12 @@
 import Link from 'next/link';
 
-import { ProductListContainer, ProductListItem, Image, Details } from './ProductList.styles';
+import {
+  ProductListContainer,
+  ProductListStyled,
+  ProductListItem,
+  Image,
+  Details
+} from './ProductList.styles';
 
 export interface IProduct {
   node: {
@@ -35,7 +41,12 @@ const ProductList = ({ products }: IProps) => {
     );
   });
 
-  return <ProductListContainer>{listItems}</ProductListContainer>;
+  return (
+    <ProductListContainer>
+      <h1>Products</h1>
+      <ProductListStyled>{listItems}</ProductListStyled>
+    </ProductListContainer>
+  );
 };
 
 export default ProductList;

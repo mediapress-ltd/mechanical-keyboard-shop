@@ -11,6 +11,7 @@ const shrinkLabelStyles = css`
 
 export const GroupContainer = styled.div`
   position: relative;
+  z-index: 1;
   input[type='password'] {
     letter-spacing: 0.3rem;
   }

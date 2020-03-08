@@ -2,9 +2,7 @@ import { gql } from 'apollo-boost';
 
 import JobList from '../components/ProductList/ProductList.component';
 
-const Products = ({ data }) => {
-  return <JobList products={data?.shop?.products?.edges || []} />;
-};
+const Products = ({ data }) => <JobList products={data?.shop?.products?.edges || []} />;
 
 Products.getInitialProps = async ({ apolloClient }) => {
   const query = gql`

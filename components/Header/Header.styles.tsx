@@ -13,6 +13,11 @@ export const HeaderContainer = styled.div`
   margin-bottom: 4rem;
   padding: 0 8rem;
   color: #292f33;
+  z-index: 10;
+
+  @media (max-width: 800px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const Links = styled.div`

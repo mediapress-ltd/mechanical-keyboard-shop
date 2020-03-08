@@ -17,6 +17,10 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 60%;
   }
+
+  @media (max-width: 800px) {
+    padding-right: unset;
+  }
 `;
 
 export const TextContainer = styled.span`
