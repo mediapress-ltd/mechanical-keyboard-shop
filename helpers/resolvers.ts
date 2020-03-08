@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 import {
-  addProductToCart,
+  addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
   getCartTotal,
@@ -64,12 +64,12 @@ const updateCartItemsRelatedQueries = (cache, newCartItems) => {
 
 export const resolvers = {
   Mutation: {
-    addProductToCart: (_root, { item }, { cache }) => {
+    addItemToCart: (_root, { item }, { cache }) => {
       const { cartItems } = cache.readQuery({
         query: GET_CART_ITEMS
       });
 
-      const newCartItems = addProductToCart(cartItems, item);
+      const newCartItems = addItemToCart(cartItems, item);
 
       updateCartItemsRelatedQueries(cache, newCartItems);
 

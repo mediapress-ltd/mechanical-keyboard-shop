@@ -50,10 +50,10 @@ interface IProductDetail {
 interface IProps {
   product: IProductDetail;
   selectedVariantId: string;
-  addProduct: (product: {}) => void;
+  addItem: (product: {}) => void;
 }
 
-const ProductDetail = ({ product, selectedVariantId, addProduct }: IProps) => {
+const ProductDetail = ({ product, selectedVariantId, addItem }: IProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedVariants, setSelectedVariants] = useState({});
 
@@ -97,7 +97,7 @@ const ProductDetail = ({ product, selectedVariantId, addProduct }: IProps) => {
     } else {
       variantToAdd = product.variants.edges[0].node;
     }
-    addProduct(variantToAdd);
+    addItem(variantToAdd);
   };
 
   const smallImages = product?.images?.edges.map((image, index) => {
