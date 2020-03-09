@@ -11,6 +11,14 @@ const GET_ITEM_COUNT = gql`
   }
 `;
 
+interface IData {
+  itemCount: number;
+}
+
+interface IProps {
+  data: IData;
+}
+
 const CartIconContainer = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -20,7 +28,7 @@ const CartIconContainer = () => {
 
   return (
     <Query query={GET_ITEM_COUNT}>
-      {({ data: { itemCount } }) => (
+      {({ data: { itemCount } }: IProps) => (
         <div>
           <CartIcon itemCount={itemCount} handleDropdown={handleDropdown} />
           {isDropdownOpen && <CartDropdownContainer />}

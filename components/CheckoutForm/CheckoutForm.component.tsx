@@ -14,9 +14,8 @@ const CheckoutForm = () => {
     city: ''
   });
 
-  const handleSubmit = () => {
-    event.preventDefault();
-
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     alert('Your order was a success!');
   };
 
@@ -31,7 +30,7 @@ const CheckoutForm = () => {
   return (
     <>
       <h2>Shipping adress</h2>
-      <FormContainer onSubmit={handleSubmit}>
+      <FormContainer onSubmit={e => handleSubmit(e)}>
         <FormInput type="text" name="firstName" value={firstName} label="First Name" required />
         <FormInput type="text" name="lastName" value={lastName} label="Last Name" required />
         <FormInput type="text" name="address" value={address} label="Address" required />

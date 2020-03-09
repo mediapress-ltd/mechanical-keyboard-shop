@@ -37,7 +37,7 @@ const CheckoutComponent = ({ cartItems, total }) => (
       </CheckoutItemsContainer>
       <TotalContainer>TOTAL: ${total}</TotalContainer>
     </CheckoutContainer>
-    <CheckoutForm />
+    {cartItems.length > 0 && <CheckoutForm />}
   </CheckoutPageContainer>
 );
 

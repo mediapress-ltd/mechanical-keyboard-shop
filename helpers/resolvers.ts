@@ -45,7 +45,20 @@ const GET_CART_ITEMS = gql`
   }
 `;
 
-const updateCartItemsRelatedQueries = (cache, newCartItems) => {
+interface ICartItem {
+  id: string;
+  image: { src: string };
+  title: string;
+  product: { title: string };
+  quantity: number;
+  price: number;
+}
+
+interface ICache {
+  writeQuery: any;
+}
+
+const updateCartItemsRelatedQueries = (cache: ICache, newCartItems: ICartItem[]) => {
   cache.writeQuery({
     query: GET_ITEM_COUNT,
     data: { itemCount: getCartItemCount(newCartItems) }
@@ -64,7 +77,7 @@ const updateCartItemsRelatedQueries = (cache, newCartItems) => {
 
 export const resolvers = {
   Mutation: {
-    addItemToCart: (_root, { item }, { cache }) => {
+    addItemToCart: (_root: any, { (item: ICartItem) }, { cache }: any) => {
       const { cartItems } = cache.readQuery({
         query: GET_CART_ITEMS
       });
@@ -76,7 +89,7 @@ export const resolvers = {
       return newCartItems;
     },
 
-    removeItemFromCart: (_root, { item }, { cache }) => {
+    removeItemFromCart: (_root: any, { item }: any, { cache }: any) => {
       const { cartItems } = cache.readQuery({
         query: GET_CART_ITEMS
       });
@@ -88,7 +101,7 @@ export const resolvers = {
       return newCartItems;
     },
 
-    clearItemFromCart: (_root, { item }, { cache }) => {
+    clearItemFromCart: (_root: any, { item }: any, { cache }: any) => {
       const { cartItems } = cache.readQuery({
         query: GET_CART_ITEMS
       });

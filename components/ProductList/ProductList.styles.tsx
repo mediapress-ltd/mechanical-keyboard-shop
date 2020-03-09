@@ -11,6 +11,10 @@ export const ProductListContainer = styled.div`
   h1 {
     font-size: 2.5rem;
   }
+
+  @media (max-width: 800px) {
+    grid-gap: unset;
+  }
 `;
 
 export const ProductListStyled = styled.div`
@@ -44,6 +48,12 @@ export const ProductListItem = styled.a`
     box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.3);
     color: #292f33;
     text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    &:hover {
+      transform: unset;
+    }
   }
 `;
 

@@ -47,15 +47,22 @@ interface IProductDetail {
   };
 }
 
+interface ISelectedVariants {
+  name: string;
+  value: string;
+  [key: string]: string;
+}
+
 interface IProps {
   product: IProductDetail;
   selectedVariantId: string;
   addItem: (product: {}) => void;
+  selectedVariants: ISelectedVariants;
 }
 
 const ProductDetail = ({ product, selectedVariantId, addItem }: IProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedVariants, setSelectedVariants] = useState({});
+  const [selectedVariants, setSelectedVariants] = useState({ name: '', value: '' });
 
   useEffect(() => {
     let selectedOptionsObject: any[] = [];
@@ -79,7 +86,7 @@ const ProductDetail = ({ product, selectedVariantId, addItem }: IProps) => {
 
   const handleSelect = (name: string, value: string) => {
     const newOption = { [name]: value };
-    const newSelectedVariants = { ...selectedVariants, ...newOption };
+    const newSelectedVariants: ISelectedVariants = { ...selectedVariants, ...newOption };
     const newVariant = product.variants.edges.filter(
       edge =>
         edge.node.title.includes(newSelectedVariants['Size']) &&

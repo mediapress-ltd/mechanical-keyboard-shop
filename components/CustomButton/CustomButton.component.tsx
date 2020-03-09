@@ -1,7 +1,14 @@
-import { CustomButtonContainer } from './CustomButton.styles';
+import { CustomButtonStyled } from './CustomButton.styles';
+import { FC } from 'react';
 
-const CustomButton = ({ children, ...props }) => (
-  <CustomButtonContainer {...props}>{children}</CustomButtonContainer>
-);
+interface IProps {
+  children: any;
+  onClick?: any;
+  type?: string;
+}
+
+const CustomButton = ({ children, onClick }: IProps) => {
+  return <CustomButtonStyled onClick={onClick}>{children}</CustomButtonStyled>;
+};
 
 export default CustomButton;

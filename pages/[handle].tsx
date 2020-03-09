@@ -1,7 +1,23 @@
 import ProductDetail from '../components/ProductDetail/ProductDetail.container';
 import { gql } from 'apollo-boost';
 
-const Product = ({ selectedVariantId, data }) => {
+interface IData {
+  shop: {
+    productByHandle: {};
+  };
+}
+
+interface IQuery {
+  handle: string;
+}
+
+interface IProps {
+  selectedVariantId: string;
+  data: IData;
+  query: IQuery;
+}
+
+const Product = ({ selectedVariantId, data }: IProps) => {
   return (
     <ProductDetail
       product={data?.shop?.productByHandle || []}
@@ -11,7 +27,7 @@ const Product = ({ selectedVariantId, data }) => {
 };
 
 Product.getInitialProps = async (ctx: {
-  apolloClient: { query };
+  apolloClient: { query: any };
   query: { handle: string };
   asPath: string;
 }) => {
@@ -19,7 +35,7 @@ Product.getInitialProps = async (ctx: {
   const queryContext = JSON.stringify(ctx.query.handle);
 
   // I tried to use --> selectedVariantId = ctx.query.variant
-  // but it only worked when the page was refresed, even when the url changed after selecting another option in the dropdown
+  // but it only worked when the page was refreshed, even when the url changed after selecting another option in the dropdown
   // so I used this expresin to get it manually. I'm very curious about why it works like that :)
 
   const selectedVariantId = ctx.asPath.includes('?variant=') && ctx.asPath.split('?variant=').pop();

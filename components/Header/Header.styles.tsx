@@ -24,7 +24,9 @@ export const Links = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 
-  a
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 `;
 
 export const A = styled.a`

@@ -15,10 +15,16 @@ interface IOption {
   values: [];
 }
 
+interface ISelectedVariants {
+  name: string;
+  value: string;
+  [key: string]: string;
+}
+
 interface IProps {
   options: IOption[];
-  selectedVariants: {};
   handleSelect: (name: string, value: string) => void;
+  selectedVariants: ISelectedVariants;
 }
 
 const VariantsSelector = ({ options, selectedVariants, handleSelect }: IProps) => {

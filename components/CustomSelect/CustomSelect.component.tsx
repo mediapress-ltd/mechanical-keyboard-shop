@@ -3,21 +3,25 @@ import { ItemRenderer, ItemPredicate, Select } from '@blueprintjs/select';
 
 import { Selector } from './CustomSelect.styles';
 
-interface IOption {
-  title: string;
-}
 interface IProps {
-  options: [];
   name: string;
-  selectedVariants: [];
+  options: string[];
+  handleSelect: Function;
+  selectedVariants: ISelectedVariants;
 }
 
-const CustomSelect = ({ name, options, handleSelect, selectedVariants }) => {
+interface ISelectedVariants {
+  name: string;
+  value: string;
+  [key: string]: string;
+}
+
+const CustomSelect = ({ name, options, handleSelect, selectedVariants }: IProps) => {
   type Option = typeof options[0];
 
   const OptionSelect = Select.ofType<Option>();
 
-  const filterOption: ItemPredicate<IOption> = (query, option) => {
+  const filterOption: ItemPredicate<string> = (query, option) => {
     return `${option}`.indexOf(query.toLowerCase()) >= 0;
   };
 
@@ -28,8 +32,7 @@ const CustomSelect = ({ name, options, handleSelect, selectedVariants }) => {
     return <MenuItem key={option} active={modifiers.active} onClick={handleClick} text={option} />;
   };
 
-  const variantValue = selectedVariants && selectedVariants[name];
-
+  const variantValue: string = selectedVariants && selectedVariants[name];
   return (
     <Selector>
       <span>{name}</span>
