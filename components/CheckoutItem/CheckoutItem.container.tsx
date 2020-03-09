@@ -1,8 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import { flowRight } from 'lodash';
-
+import { compose } from 'recompose';
 import CheckoutItem from './CheckoutItem.component';
 
 const ADD_ITEM_TO_CART = gql`
@@ -39,7 +38,7 @@ const CollectionItemContainer = ({
   />
 );
 
-export default flowRight(
+export default compose(
   graphql(ADD_ITEM_TO_CART, { name: 'addItemToCart' }),
   graphql(REMOVE_ITEM_FROM_CART, { name: 'removeItemFromCart' }),
   graphql(CLEAR_ITEM_FROM_CART, { name: 'clearItemFromCart' })

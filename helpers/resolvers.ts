@@ -77,7 +77,7 @@ const updateCartItemsRelatedQueries = (cache: ICache, newCartItems: ICartItem[])
 
 export const resolvers = {
   Mutation: {
-    addItemToCart: (_root: any, { (item: ICartItem) }, { cache }: any) => {
+    addItemToCart: (_root: any, { item }: any, { cache }: any) => {
       const { cartItems } = cache.readQuery({
         query: GET_CART_ITEMS
       });
