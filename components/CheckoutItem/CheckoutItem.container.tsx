@@ -22,13 +22,34 @@ const CLEAR_ITEM_FROM_CART = gql`
   }
 `;
 
+interface ICartItem {
+  id: string;
+  image: { src: string };
+  title: string;
+  product: { title: string };
+  quantity: number;
+  price: number;
+}
+
+interface IAux {
+  key: string;
+  cartItem: ICartItem;
+}
+
+interface IProps {
+  cartItem: ICartItem;
+  clearItemFromCart: ({}: any) => {};
+  addItemToCart: ({}: any) => {};
+  removeItemFromCart: ({}: any) => {};
+}
+
 const CollectionItemContainer = ({
   addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
   cartItem,
   ...otherProps
-}) => (
+}: IProps) => (
   <CheckoutItem
     {...otherProps}
     cartItem={cartItem}
@@ -38,7 +59,7 @@ const CollectionItemContainer = ({
   />
 );
 
-export default compose(
+export default compose<IProps, IAux>(
   graphql(ADD_ITEM_TO_CART, { name: 'addItemToCart' }),
   graphql(REMOVE_ITEM_FROM_CART, { name: 'removeItemFromCart' }),
   graphql(CLEAR_ITEM_FROM_CART, { name: 'clearItemFromCart' })

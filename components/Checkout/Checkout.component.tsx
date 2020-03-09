@@ -10,7 +10,21 @@ import {
   TotalContainer
 } from './Checkout.styles';
 
-const CheckoutComponent = ({ cartItems, total }) => (
+interface ICartItem {
+  id: string;
+  image: { src: string };
+  title: string;
+  product: { title: string };
+  quantity: number;
+  price: number;
+}
+
+interface IProps {
+  cartItems: ICartItem[];
+  total: number;
+}
+
+const CheckoutComponent = ({ cartItems, total }: IProps) => (
   <CheckoutPageContainer>
     <CheckoutContainer>
       <CheckoutHeaderContainer>
@@ -31,7 +45,7 @@ const CheckoutComponent = ({ cartItems, total }) => (
         </HeaderBlockContainer>
       </CheckoutHeaderContainer>
       <CheckoutItemsContainer>
-        {cartItems.map(cartItem => (
+        {cartItems.map((cartItem: ICartItem) => (
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </CheckoutItemsContainer>

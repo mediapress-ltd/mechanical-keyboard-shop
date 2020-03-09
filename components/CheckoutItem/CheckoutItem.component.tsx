@@ -6,7 +6,23 @@ import {
   RemoveButtonContainer
 } from './CheckoutItem.styles';
 
-const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
+interface ICartItem {
+  id: string;
+  image: { src: string };
+  title: string;
+  product: { title: string };
+  quantity: number;
+  price: number;
+}
+
+interface IProps {
+  cartItem: ICartItem;
+  clearItem: (cartItem: ICartItem) => {};
+  addItem: (cartItem: ICartItem) => {};
+  removeItem: (cartItem: ICartItem) => {};
+}
+
+const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }: IProps) => {
   const { image, title, product, quantity, price } = cartItem;
   return (
     <CheckoutItemContainer>

@@ -22,7 +22,10 @@ class MyApp extends App<IProps> {
       <>
         <Head>
           <title>Mechannical Keyboard Shop</title>
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <ApolloProvider client={apollo}>
           <Header />
