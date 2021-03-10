@@ -1,0 +1,39 @@
+schema:
+  - "https://mechanical-keyboard-shop.myshopify.com/api/2020-01/graphql.json":
+      headers:
+        X-Shopify-Storefront-Access-Token: "e70a4afc72a3aa7d7ea51bd894d0b0f9"
+generates:
+  ./graphql/types.ts:
+    documents: "./graphql/documents/*.ts"
+    hooks:
+      afterOneFileWrite:
+        - yarn eslint --fix
+        - yarn prettier --write
+    config:
+      scalars:
+        DateTime: string
+        Money: string
+        Decimal: string
+        HTML: string
+      typesPrefix: I
+      enumPrefix: false
+      withHooks: true
+      withRefetchFn: true
+      withHOC: false
+      withComponent: false
+      namingConvention:
+        typeNames: change-case#pascalCase
+        transformUnderscore: true
+      apolloClientVersion: 3
+      declarationKind: interface
+      avoidOptionals: false
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+      - fragment-matcher
+  ./graphql/schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      commentDescriptions: true
