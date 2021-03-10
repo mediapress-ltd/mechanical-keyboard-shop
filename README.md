@@ -2,10 +2,11 @@
 
 ## Assignment
 
-1. Connect to Shopify's Storefront API with the domain https://mechanical-keyboard-shop.myshopify.com/api/2020-01/graphql.json (access key will be sent in the email)
+1. Create `pages/products/index.tsx` to display an overview of the products in the `keyboard` collection. There is a collection already with the handle `keyboard`.
+2. Create `pages/products/[handle].tsx` that will display an individual product and variants 
+
+
 You can find the official documentation here: https://shopify.dev/docs/storefront-api and a "Getting started" guide here: https://shopify.dev/docs/storefront-api/getting-started
-2. Create `pages/products.tsx` to display an overview of the products in the `keyboard` collection. There is a collection already with the handle `keyboard`.
-3. Create `pages/[handle].tsx` that will display an individual product and variants 
 
 ## Note
 
@@ -13,6 +14,6 @@ This is a Typescript project and everything you write should be valid Typescript
 
 ### Bonus points
 
-- add basic styling (e.g. https://blueprintjs.com/)
+- add basic styling (e.g. [Material UI](https://material-ui.com/))
 - add Cart functionality
-- add Checkout 
+- add Shopify Checkout 

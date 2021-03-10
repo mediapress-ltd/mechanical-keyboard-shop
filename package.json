@@ -6,19 +6,31 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gql:gen": "graphql-codegen --config graphql/codegen.yml -r dotenv-flow/config"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "eslint": "^7.21.0",
+    "graphql": "^15.5.0",
     "next": "^9.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.17.8",
+    "@graphql-codegen/fragment-matcher": "^2.0.0",
+    "@graphql-codegen/schema-ast": "^1.17.8",
+    "@graphql-codegen/typescript": "^1.17.9",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "^2.0.6",
     "@types/node": "^13.7.1",
     "@types/react": "^16.9.20",
+    "dotenv-flow": "^3.2.0",
+    "prettier": "^2.2.1",
     "typescript": "^3.7.5"
   }
 }
