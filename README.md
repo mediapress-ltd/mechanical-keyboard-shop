@@ -10,7 +10,7 @@ You can find the official documentation here: https://shopify.dev/docs/storefron
 
 ## Note
 
-This is a Typescript project and everything you write should be fully-typed, valid Typescript. Use of any is **strongly** discouraged. You can add additional packages and it's encouraged to use Apollo for anything GraphQL related.
+This is a Typescript project and everything you write should be fully-typed, valid Typescript. Use of `any` is **strongly** discouraged. You can add additional packages and it's encouraged to use Apollo for anything GraphQL related.
 
 ### Bonus points
 
